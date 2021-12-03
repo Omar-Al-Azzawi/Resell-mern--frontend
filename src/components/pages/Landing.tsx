@@ -27,14 +27,14 @@ export default function Landing() {
                     <div className='h-10'>
                       <AddProduct />
                     </div>
-                        <div className='grid grid-cols-4 gap-2 mt-20'>
+                        <div className='grid grid-cols-4 gap-1 mt-20 mx-20'>
                         {products.map((product: any) => (
-                            <div className="w-60 h-60 p-2 bg-white rounded-xl border m-auto mb-10" key={product._id}>
+                            <div className="w-60 h-60 p-2 bg-white rounded-xl border m-auto mb-10 hover:shadow-2xl" key={product._id}>
                                 <img src="https://image.shutterstock.com/image-vector/resale-concept-big-word-text-260nw-1513710023.jpg" alt={product.name} className="w-40 m-auto object-contain rounded-xl" />
                                 <div className='p-2'>
                                     <h3 className='font-bold text-lg'>{product.name}</h3>
                                     <p className='text-sm text-gray-600'>{product.price}€</p>
-                                    <p className='text-sm text-gray-600'>{product.description.slice(0, 30)}</p>
+                                    <p className='text-sm text-gray-600'>{product.description.slice(0, 25)}</p>
                                 </div>
                                 <button className='m-2 bg-blue-200 py-1 px-2 rounded-md hover:bg-green-200' onClick={() => dispatch(addItem(product))}>Add to cart</button>
                             </div>

@@ -12,10 +12,10 @@ export default function Cart() {
             <h2>Cart</h2>
             <div className='flex flex-col'>
                 {items.cartItems.map((item: any) => (
-                    <div key={item._id}>
+                    <div className='flex justify-start m-4' key={item._id}>
                         <h3>{item.name}</h3>
                         <p>{item.price}</p>
-                        <button onClick={() => dispatch(removeItem(item))}>Remove</button>
+                        <button className='bg-red-300 px-2 py-1 rounded-md' onClick={() => dispatch(removeItem(item))}>Remove</button>
                     </div>
                 ))}
             </div>
