@@ -47,7 +47,7 @@ export default function Landing() {
                                 <button className='m-2 bg-green-100 py-1 px-2 rounded-md hover:bg-green-200' onClick={() => dispatch(addItem(product))}>Add to cart</button>
                                 <button className='m-2 bg-red-200 py-1 px-2 rounded-md hover:bg-red-300' onClick={() => handleDelete(product._id)}>Delete</button>
                                 <button className='m-1 bg-yellow-200 py-2 px-2 rounded-md hover:bg-yellow-300'>
-                                   <Link to={`/updataproduct/${product._id}`}> 
+                                   <Link to={`/products/${product._id}`}> 
                                      <FaPencilAlt />
                                    </Link>
                                 </button>

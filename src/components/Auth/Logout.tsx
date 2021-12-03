@@ -13,7 +13,7 @@ const Logout = (props: any) => {
             /* localStorage.removeItem('user'); */
             dispatch(logout());
             navigate('/'); 
-        }} className="cursor-pointer hover:text-blue-300 border border-black  px-3 rounded-md">Logout</p>
+        }} className="cursor-pointer text-black font-bold hover:bg-white border border-black  px-3 rounded-md">Logout</p>
     )
 }
 
