@@ -8,7 +8,7 @@ export default function Cart() {
     const dispatch = useDispatch()
 
     return (
-        <div>
+        <div className=''>
             <h2>Cart</h2>
             <div className='flex flex-col'>
                 {items.cartItems.map((item: any) => (

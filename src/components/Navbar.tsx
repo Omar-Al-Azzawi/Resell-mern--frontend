@@ -18,7 +18,7 @@ export default function Navbar() {
 
     console.log();
     return (
-        <nav className='flex justify-between bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500'>
+        <nav className='flex justify-between bg-gradient-to-r from-green-400 via-blue-500 to-purple-500'>
             <div className='flex m-8 font-bold font-mono'>
                 <img className='w-20' src="https://www.rsll.io/assets/images/resell-logo.png" alt="resale" />
             </div>
