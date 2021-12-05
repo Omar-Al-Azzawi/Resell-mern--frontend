@@ -1,20 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from "react-router-dom";
 import { FiShoppingCart } from 'react-icons/fi'
+import { useLocation } from 'react-router';
 
 import Logout from './Auth/Logout';
 
 export default function Navbar() {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('user') || '{}'));
     const cartSize = useSelector((state: any) => state.cart)
+    const location = useLocation();
 
-    /* useEffect(() => {
-
+    useEffect(() => {
         const token = user?.token;
-        setUser(JSON.parse(localStorage.getItem('user') || '{}'))
-        
-    }, []) */
+
+        setUser(JSON.parse(localStorage.getItem('user') || '{}'));
+    }, [location])
+
 
     console.log();
     return (
@@ -27,20 +29,20 @@ export default function Navbar() {
             </div>
             <div>
                 <ul className='flex m-4'>
-                    <li className='p-4 hover:text-blue-300 text-black font-bold'>
+                    <li className='p-4 hover:text-gray-500 text-black font-bold'>
                         <Link to="/">Home</Link> 
                     </li>
                     <li className='p-4 text-gray-600'>
                         {user ? (
                             <div className='flex'>
-                                {<p className='mx-4'>{user.result.name}</p>}
-                                <Logout/>
+                                <p className='mx-4'>{user?.result?.name}</p>
+                                {user?.result?.name ? <Logout/> : <Link className='hover:text-black border border-black rounded-md px-3' to="/login">Login</Link>}
                             </div>
                         ) : (
                             <Link to="/login">Login</Link>
                         )}
                     </li>
-                    <li className='p-5 mx-6 hover:text-blue-300 flex text-black font-bold'>
+                    <li className='p-5 mx-6 hover:text-gray-500 flex text-black font-bold'>
                       <Link to="/cart"><FiShoppingCart /></Link>
                       <span className='mx-2 '>{cartSize.cartItems.length}</span>
                     </li>
