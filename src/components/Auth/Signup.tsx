@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 
 import { useNavigate } from 'react-router-dom'
@@ -7,28 +7,15 @@ import { useDispatch } from 'react-redux'
 import { login } from "../../featurs/authSlice"
 
 
-
-
 export default function Signup() {
-/*     const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('') */
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    /* const [confirmpassword, setConfirmpassword] = useState('') */
     const [disabled, setDisabled] = useState(false)
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
-
- /*    useEffect(() => {
-        if (password === confirmpassword) {
-            setDisabled(false)
-        } else {
-            setDisabled(true)
-        }
-    }, [password, confirmpassword]) */
 
 
     const hundleClick = () => {
