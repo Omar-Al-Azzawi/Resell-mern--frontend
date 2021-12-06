@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+
 import  { useDispatch } from 'react-redux'
-import { MdEditNote } from 'react-icons/md'
-import { MdDelete } from 'react-icons/md'
 import { Link } from 'react-router-dom'
+import { MdDelete } from 'react-icons/md'
+import { MdEditNote } from 'react-icons/md'
 import { MdOutlineAddShoppingCart } from 'react-icons/md'
 
-import { addItem } from '../../featurs/cartSlice'
 
+import { addItem } from '../../featurs/cartSlice'
 import AddProduct from './AddProduct'
-import { userInfo } from 'os'
 
 
 export default function Landing() {
@@ -35,7 +35,7 @@ export default function Landing() {
 
     return (
             <section>
-                    <div className='h-10'>
+                    <div className=' mb-20'>
                      {user.result?.googleId ? <AddProduct /> : 
                          <div>
                             <h1 className='text-center text-2xl font-bold mt-10'>Welcome to the store</h1>

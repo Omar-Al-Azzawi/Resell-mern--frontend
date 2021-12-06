@@ -43,20 +43,20 @@ export default function Signup() {
            <div className='w-1/4 m-auto fixed inset-0' style={{height: '300px'}}>
                 <h1 className='text-center text-blue-400 animate-bounce'>Sign up</h1> 
                 <div className='mb-4'>
-                    <label>First name</label>
-                    <input onChange={(e) => setFirstName(e.target.value)} className='w-full p-3 py-2 border border-gray-400 rounded-md' type="text" placeholder='first name..'/>
+                    {/* <label>First name</label> */}
+                    <input onChange={(e) => setFirstName(e.target.value)} className='w-full p-3 py-2 border border-gray-400 rounded-md' type="text" placeholder='First name..'/>
                 </div>
                 <div className='mb-4'>
-                    <label>Last name</label>
-                    <input onChange={(e) => setLastName(e.target.value)} className='w-full p-3 py-2 border border-gray-400 rounded-md' type="text" placeholder='last name..'/>
+                    {/* <label>Last name</label> */}
+                    <input onChange={(e) => setLastName(e.target.value)} className='w-full p-3 py-2 border border-gray-400 rounded-md' type="text" placeholder='Last name..'/>
                 </div>
                 <div className='mb-4'>
-                    <label>Password</label>
-                    <input onChange={(e) => setPassword(e.target.value)} className='w-full p-3 py-2 border border-gray-400 rounded-md' type="password" placeholder='Password'/>
+                    {/* <label>Email</label> */}
+                    <input onChange={(e) => setEmail(e.target.value)} className='w-full p-3 py-2 border border-gray-400 rounded-md' type="text" placeholder='Email..'/>
                 </div>
                 <div className='mb-4'>
-                    <label>Email</label>
-                    <input onChange={(e) => setEmail(e.target.value)} className='w-full p-3 py-2 border border-gray-400 rounded-md' type="text" placeholder='email'/>
+                    {/* <label>Password</label> */}
+                    <input onChange={(e) => setPassword(e.target.value)} className='w-full p-3 py-2 border border-gray-400 rounded-md' type="password" placeholder='Password..'/>
                 </div>
                 <div className='flex justify-between items-center'>
                     <div>

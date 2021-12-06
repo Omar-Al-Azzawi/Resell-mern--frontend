@@ -13,7 +13,7 @@ const initialState = {
 }
 
 export default function Login() {
-    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [data, setData] = useState(initialState)
     const [isSignup, setIsSignp] = useState(false)
@@ -32,11 +32,11 @@ export default function Login() {
         console.log(response);
         try {
           dispatch(login({ result, token }))
-          window.location.reload()
-          navigate('/')
-              } catch (error) {
-                  console.log(error)
-                }
+        } catch (error) {
+            console.log(error)
+        }
+        navigate('/')
+        /* window.location.reload() */
         }
 
      const googleFailure = (error: any) => {
@@ -44,16 +44,20 @@ export default function Login() {
     }
 
      const handelSubmit = () => {
-        console.log(username, password);
+        console.log(email, password);
         axios.post('http://localhost:3000/api/v1/users/login', {
-            username,
+            email,
             password
         })
         .then(res => {
             console.log(res);
-            navigate('/')
+            const token = res.data.token;
+            const result = res.data;
+            dispatch(login({ result, token }))
         }
         )
+        navigate('/')
+        
     }
 
     /* const googleId : string = (process.env.REACT_APP_GOOGLE_ID as string); */
@@ -62,12 +66,12 @@ export default function Login() {
         <div className='w-1/4 m-auto fixed inset-0' style={{height: '300px'}}>
             <h1 className='text-center text-blue-400 animate-bounce'>Sign in</h1>
             <div className='mb-4'>
-                <label>Username</label>
-                <input onChange={(e) => setUsername(e.target.value)} className='w-full p-3 py-2 border border-gray-400 rounded-md' type="text" placeholder='username..'/>
+               {/*  <label>Username</label> */}
+                <input onChange={(e) => setEmail(e.target.value)} className='w-full p-3 py-2 border border-gray-400 rounded-md' type="text" placeholder='Email..'/>
             </div>
             <div className='mb-4'>
-                <label>Password</label>
-                <input onChange={(e) => setPassword(e.target.value)} className='w-full p-3 py-2 border border-gray-400 rounded-md' type="password" placeholder='Password'/>
+                {/* <label>Password</label> */}
+                <input onChange={(e) => setPassword(e.target.value)} className='w-full p-3 py-2 border border-gray-400 rounded-md' type="password" placeholder='Password..'/>
             </div>
             <div className='flex justify-between items-center'>
                 <div>
@@ -82,7 +86,7 @@ export default function Login() {
                     <button className='w-full h-10 mt-4 flex items-start justify-center px-4 py-1.5 bg-gray-100 rounded-md hover:bg-gray-200 transition duration-500 ease-in-out' 
                     onClick={renderProps.onClick}
                     disabled={renderProps.disabled}
-                    >Login with Google <span className='mt-1 ml-2 font-size-xl'><FcGoogle /></span></button>
+                    >Login with Google <span className='mt-1 ml-2 text-xl'><FcGoogle /></span></button>
                 )}
                 onSuccess={googleSuccess}
                 onFailure={googleFailure}
