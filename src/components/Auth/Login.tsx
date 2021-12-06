@@ -7,15 +7,10 @@ import { useDispatch } from 'react-redux'
 import { FcGoogle } from 'react-icons/fc'
 import { login }  from '../../featurs/authSlice'
 
-const initialState = {
-    email: '',
-    password: ''
-}
 
 export default function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [data, setData] = useState(initialState)
     const [isSignup, setIsSignp] = useState(false)
     const dispatch = useDispatch()
 
@@ -43,21 +38,28 @@ export default function Login() {
         console.log(error)
     }
 
-     const handelSubmit = () => {
+     const handelSubmit = async () => {
+
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+
         console.log(email, password);
-        axios.post('http://localhost:3000/api/v1/users/login', {
+
+       await axios.post('http://localhost:3000/api/v1/users/login', {
             email,
             password
-        })
+        }
+        , config)
         .then(res => {
             console.log(res);
-            const token = res.data.token;
-            const result = res.data;
-            dispatch(login({ result, token }))
+            localStorage.setItem('userLocal', JSON.stringify(res))
         }
         )
         navigate('/')
-        
+        window.location.reload()
     }
 
     /* const googleId : string = (process.env.REACT_APP_GOOGLE_ID as string); */

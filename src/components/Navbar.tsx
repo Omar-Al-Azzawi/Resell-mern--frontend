@@ -8,6 +8,7 @@ import Logout from './Auth/Logout';
 
 export default function Navbar() {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('user') || '{}'));
+    const [userLocal, setUserLocal] = useState(JSON.parse(localStorage.getItem('userLocal') || '{}'))
     const cartSize = useSelector((state: any) => state.cart)
     const location = useLocation();
 
@@ -35,8 +36,8 @@ export default function Navbar() {
                     <li className='p-4 text-gray-600'>
                         {user ? (
                             <div className='flex'>
-                                <p className='mx-4'>{user?.result?.name}</p>
-                                {user?.result?.name ? <Logout/> : <Link className='hover:text-black border border-black rounded-md px-3' to="/login">Login</Link>}
+                                <p className='mx-4'>{user?.result?.name || userLocal?.data?.user?.firstName}</p>
+                                {user?.result?.name || userLocal?.data?.user?.firstName ? <Logout/> : <Link className='hover:text-black border border-black rounded-md px-3' to="/login">Login</Link>}
                             </div>
                         ) : (
                             <Link to="/login">Login</Link>

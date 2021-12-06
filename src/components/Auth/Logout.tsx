@@ -9,6 +9,7 @@ const Logout = (props: any) => {
     return (
         <p onClick={() => {
             localStorage.removeItem('user');
+            localStorage.removeItem('userLocal');
             dispatch(logout());
             navigate('/'); 
             window.location.reload();

@@ -13,7 +13,8 @@ import AddProduct from './AddProduct'
 
 
 export default function Landing() {
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem('user') || '{}'));
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('user') || '{}'))
+    const [userLocal, setUserLocal] = useState(JSON.parse(localStorage.getItem('userLocal') || '{}'))
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(false)
     const [search, setSearch] = useState('')
@@ -36,14 +37,14 @@ export default function Landing() {
     return (
             <section>
                     <div className=' mb-20'>
-                     {user.result?.googleId ? <AddProduct /> : 
+                     {user.result?.googleId || userLocal?.data?.user?._id ? <AddProduct /> : 
                          <div>
                             <h1 className='text-center text-2xl font-bold mt-10'>Welcome to the store</h1>
                             <p className='text-center text-gray-600'>Please login or register to add products</p>
                          </div>}
                     </div>
                     <div className="mt-10 mx-10 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                        {products.map((product: any) => (<div key={product.id} className="group relative">
+                        {products.map((product: any) => (<div key={product._id} className="group relative">
                      <div className="w-full h-100 p-2 bg-white rounded-xl border m-auto mb-10 hover:shadow-2xl" key={product._id}>
                         <img  src="https://image.shutterstock.com/image-vector/resale-concept-big-word-text-260nw-1513710023.jpg" alt={product.name} className="w-40 h-30 m-auto object-contain rounded-xl" />
                             <div className='p-2'>
@@ -52,7 +53,7 @@ export default function Landing() {
                                  <p className='text-sm text-gray-600'>{product.description.slice(0, 25)}</p>
                             </div>
                               <button className='m-2 bg-green-100 py-1 px-2 rounded-md hover:bg-green-200' onClick={() => dispatch(addItem(product))}><MdOutlineAddShoppingCart /></button>
-                                {user.result?.googleId ? <><button className='m-2 py-1 px-2 rounded-md hover:text-red-600' onClick={() => handleDelete(product._id)}><MdDelete /></button>
+                                {user.result?.googleId || userLocal?.data?.user?._id ? <><button className='m-2 py-1 px-2 rounded-md hover:text-red-600' onClick={() => handleDelete(product._id)}><MdDelete /></button>
                               <button className='mt-5 py-2 rounded-md hover:text-yellow-500 text-l'>
                                 <Link to={`/products/${product._id}`}> 
                                    <MdEditNote />
