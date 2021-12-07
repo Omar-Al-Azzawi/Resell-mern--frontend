@@ -36,7 +36,7 @@ export default function Landing() {
 
 
     return (
-            <section>
+            <section className='mb-20'>
                     <div className=' mb-20'>
                      {user.result?.googleId || userLocal?.data?.user?._id ? <AddProduct /> : 
                          <div>

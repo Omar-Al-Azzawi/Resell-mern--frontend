@@ -36,12 +36,14 @@ export default function UpdataProduct() {
 
 
     return (
-        <div className='w-1/4 m-auto fixed inset-0' style={{height: '300px'}}>
-            <h1 className='text-center text-blue-400 animate-bounce'>Updata Product</h1>
-            <input className='w-full p-3 py-2 m-2 border border-gray-400 rounded-md' type="text" placeholder="name" value={name} onChange={(e) => setName(e.target.value)} />
-            <input className='w-full p-3 py-2 m-2 border border-gray-400 rounded-md' type="text" placeholder="price" value={price} onChange={(e) => setPrice(e.target.value)} />
-            <textarea className='w-full p-3 py-2 m-2 border border-gray-400 rounded-md'  placeholder="description" value={description} onChange={(e) => setDescription(e.target.value)} />
-            <button className='px-4 py-1.5 ml-2 mt-2 font-bold bg-transparint border border-gray-400 rounded-md hover:bg-blue-400 hover:text-white transition duration-500 ease-in-out' onClick={() => handleUpdata}>Updata</button>
+        <div className='h-screen'>
+            <div className='w-1/4 m-auto fixed inset-0' style={{height: '300px'}}>
+                <h1 className='text-center text-blue-400 animate-bounce'>Updata Product</h1>
+                <input className='w-full p-3 py-2 m-2 border border-gray-400 rounded-md' type="text" placeholder="name" value={name} onChange={(e) => setName(e.target.value)} />
+                <input className='w-full p-3 py-2 m-2 border border-gray-400 rounded-md' type="text" placeholder="price" value={price} onChange={(e) => setPrice(e.target.value)} />
+                <textarea className='w-full p-3 py-2 m-2 border border-gray-400 rounded-md'  placeholder="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+                <button className='px-4 py-1.5 ml-2 mt-2 font-bold bg-transparint border border-gray-400 rounded-md hover:bg-blue-400 hover:text-white transition duration-500 ease-in-out' onClick={() => handleUpdata}>Updata</button>
+            </div>
         </div>
     )
 }

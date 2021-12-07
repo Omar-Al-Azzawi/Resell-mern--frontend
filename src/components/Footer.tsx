@@ -3,8 +3,8 @@ import { AiFillFacebook, AiFillInstagram, AiFillTwitterSquare } from 'react-icon
 
 export default function Footer() {
     return (
-        <footer className='flex justify-between bg-gradient-to-t from-blue-500'>
-            <div className='h-10 m-20'>
+        <footer className='w-full flex justify-between bg-gradient-to-t from-blue-500 '>
+            <div className=' m-20'>
                 <ul className='flex items-center justify-center'>
                     <li className='text-gray-600 mx-3 text-2xl hover:text-black'>
                         <a href="#">
