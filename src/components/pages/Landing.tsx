@@ -7,14 +7,14 @@ import { MdDelete } from 'react-icons/md'
 import { MdEditNote } from 'react-icons/md'
 import { MdOutlineAddShoppingCart } from 'react-icons/md'
 
-
 import { addItem } from '../../featurs/cartSlice'
+import { updata } from '../../featurs/updataSlice'
 import AddProduct from './AddProduct'
 
 
 export default function Landing() {
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem('user') || '{}'))
-    const [userLocal, setUserLocal] = useState(JSON.parse(localStorage.getItem('userLocal') || '{}'))
+    const [user] = useState(JSON.parse(localStorage.getItem('user') || '{}'))
+    const [userLocal] = useState(JSON.parse(localStorage.getItem('userLocal') || '{}'))
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(false)
     const [search, setSearch] = useState('')
@@ -22,7 +22,7 @@ export default function Landing() {
     const dispatch = useDispatch()
     
     useEffect(() => {
-        axios.get('http://localhost:3000/api/v1/products')
+        axios.get(`http://localhost:3000/api/v1/products`)
             .then(res => {
                 console.log(res.data)
                 setProducts(res.data)
@@ -34,10 +34,9 @@ export default function Landing() {
             window.location.reload()
     }
 
-
     return (
-            <section className='mb-20'>
-                    <div className=' mb-20'>
+            <section className='h-screen mb-20'>
+                    <div className='mb-20'>
                      {user.result?.googleId || userLocal?.data?.user?._id ? <AddProduct /> : 
                          <div>
                             <h1 className='text-center text-2xl font-bold mt-10'>Welcome to the store</h1>
@@ -46,7 +45,7 @@ export default function Landing() {
                     </div>
                     <div className="mt-10 mx-10 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                         {products.map((product: any) => (<div key={product._id} className="group relative">
-                     <div className="w-full h-100 p-2 bg-white rounded-xl border m-auto mb-10 hover:shadow-2xl" key={product._id}>
+                     <div className="w-full h-100 p-2 bg-white rounded-xl border m-auto mb-10 hover:shadow-2xl transition duration-500 ease-in-out"  key={product._id}>
                         <img  src="https://image.shutterstock.com/image-vector/resale-concept-big-word-text-260nw-1513710023.jpg" alt={product.name} className="w-40 h-30 m-auto object-contain rounded-xl" />
                             <div className='p-2'>
                                  <h3 className='font-bold text-lg'>{product.name}</h3>
@@ -55,7 +54,7 @@ export default function Landing() {
                             </div>
                               <button className='m-2 bg-green-100 py-1 px-2 rounded-md hover:bg-green-200' onClick={() => dispatch(addItem(product))}><MdOutlineAddShoppingCart /></button>
                                 {user.result?.googleId || userLocal?.data?.user?._id ? <><button className='m-2 py-1 px-2 rounded-md hover:text-red-600' onClick={() => handleDelete(product._id)}><MdDelete /></button>
-                              <button className='mt-5 py-2 rounded-md hover:text-yellow-500 text-l'>
+                              <button className='mt-5 py-2 rounded-md hover:text-yellow-500 text-l' onClick={() => dispatch(updata(product))}>
                                 <Link to={`/products/${product._id}`}> 
                                    <MdEditNote />
                                 </Link>
@@ -68,3 +67,11 @@ export default function Landing() {
     )
 }
 
+
+/* filter((val) => {
+    if(search === ''){
+        return val
+    } else if (val.name.toLowerCase().includes(search.toLowerCase())){
+        return val
+    }
+}). */

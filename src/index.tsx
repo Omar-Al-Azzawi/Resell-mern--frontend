@@ -7,11 +7,13 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import cartReducer from './featurs/cartSlice';
 import authReducer from './featurs/authSlice';
+import updataReducer from './featurs/updataSlice';
 
 const store = configureStore({
   reducer: {
     cart: cartReducer,
     auth: authReducer,
+    updata: updataReducer,
   }
 });
 

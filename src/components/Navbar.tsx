@@ -45,7 +45,7 @@ export default function Navbar() {
                     </li>
                     <li className='p-5 mx-6 hover:text-gray-500 flex text-black font-bold'>
                       <Link to="/cart"><FiShoppingCart /></Link>
-                      <span className='mx-2 '>{cartSize.cartItems.length}</span>
+                      <span className='mx-2'>{cartSize.cartItems.length > 0 ? cartSize.cartItems.length : null}</span>
                     </li>
                 </ul>
             </div>

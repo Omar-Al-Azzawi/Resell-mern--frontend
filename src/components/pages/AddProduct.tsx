@@ -27,7 +27,7 @@ export default function AddProduct() {
             <input className='border border-gray-400 h-15 m-1 p-2 rounded-md' type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder='product name..'/>
             <input className='border border-gray-400 h-15  m-1 p-2 rounded-md' type="text" value={price} onChange={(e) => setPrice(e.target.value)} placeholder='price..'/>
             <input className='border border-gray-400 h-15 m-1 p-2 rounded-md flex-grow' value={description} onChange={(e) => setDescription(e.target.value)} placeholder='description..'/>
-            <button className='border border-gray-400 h-15  m-1 p-2 rounded-md items-center bg-white hover:bg-blue-400 hover:text-white hover:shadow-2xl' onClick={() => handleSubmit()}>Add Product</button>
+            <button className='border border-gray-400 h-15  m-1 p-2 rounded-md items-center bg-white hover:bg-blue-400 hover:text-white hover:shadow-2xl transition duration-300 ease-in-out' onClick={() => handleSubmit()}>Add Product</button>
         </div>
     )
 }

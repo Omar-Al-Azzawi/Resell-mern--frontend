@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { GoogleLogin } from 'react-google-login'
 import { useNavigate } from 'react-router-dom'
@@ -21,18 +21,24 @@ export default function Login() {
         navigate("/signup");
       }
 
-      const googleSuccess = async (response: any) => {
-        const result = response?.profileObj;
-        const token = response?.tokenId;
-        console.log(response);
-        try {
-          dispatch(login({ result, token }))
-        } catch (error) {
-            console.log(error)
-        }
-        navigate('/')
-        /* window.location.reload() */
-        }
+
+        const googleSuccess = async (response: any) => {
+            let res = await axios.post('http://localhost:3000/api/v1/users/google-auth',
+            { id_token: response.tokenObj.id_token }
+            );
+            console.log(res, 'res with token');
+      
+              const result = response?.profileObj;
+              const token = response?.tokenId;
+              console.log(response);
+              navigate('/')
+              try {
+              dispatch(login({ result, token }))
+              } catch (error) {
+                  console.log(error)
+              }
+          }
+
 
      const googleFailure = (error: any) => {
         console.log(error)
@@ -66,8 +72,8 @@ export default function Login() {
 
     return (
         <div className="login-container h-screen">
-            <div className='w-1/4 m-auto fixed inset-0' style={{height: '300px'}}>
-                <h1 className='text-center text-blue-400 animate-bounce'>Sign in</h1>
+            <div className='w-1/3 m-auto fixed inset-0' style={{height: '300px'}} >
+                <h1 className='text-center text-blue-400 mb-4'>Sign in</h1>
                 <div className='mb-4'>
                 {/*  <label>Username</label> */}
                     <input onChange={(e) => setEmail(e.target.value)} className='w-full p-3 py-2 border border-gray-400 rounded-md' type="text" placeholder='Email..'/>
@@ -80,7 +86,7 @@ export default function Login() {
                     <div>
                         <p>I don't have account <span className='text-yellow-400 cursor-pointer hover:text-blue-600' onClick={() => handleClick()}>Sign up</span></p>
                     </div>
-                    <button className='px-4 py-1.5 font-bold text-gray-500 border border-gray-400 rounded-md hover:bg-blue-400 hover:text-white transition duration-500 ease-in-out' onClick={() => handelSubmit()}>Login</button>
+                    <button className='px-4 py-1.5 font-bold text-gray-500 border border-gray-400 rounded-md hover:bg-blue-400 hover:text-white transition duration-300 ease-in-out' onClick={() => handelSubmit()}>Login</button>
                 </div>
                 <div className='w-full'>
                 <GoogleLogin 
