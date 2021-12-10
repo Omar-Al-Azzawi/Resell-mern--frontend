@@ -63,13 +63,13 @@ export default function Cart() {
             <div>
                {items.cartItems.length > 0 ? <button className='font-medium text-red-600 hover:text-indigo-500 m-20' onClick={() => dispatch(clearCart())}>Remove all</button> : <>
                <p className='text-start m-20'>Cart is empty!</p>
-               <button
+              {/*  <button
                           type="button"
                           className="fixed botton-10 text-blue-400 font-medium hover:text-indigo-500 ml-20"
                           onClick={() => navigate('/')}
                         >
                           Back<span aria-hidden="true"> &rarr;</span>
-                        </button>
+                        </button> */}
                </>}
             </div>
           </div>

@@ -61,8 +61,8 @@ export default function Landing() {
                                     return val
                                 }
                             }).map((product: any) => (<div key={product._id} className="group relative">
-                          <div className="w-full h-90 p-2 bg-white rounded-xl border m-auto mb-10 hover:shadow-2xl transition duration-500 ease-in-out"  key={product._id}>
-                            <img  src="https://cdn5.vectorstock.com/i/thumb-large/20/44/reseller-rgb-color-icon-vector-34552044.jpg" alt={product.name} className="w-60 h-30 py-10 m-auto object-contain rounded-t-xl border border-gray-200" />
+                          <div className="w-full h-90 p-2 bg-white rounded-xl border border-gray-600 m-auto mb-10 hover:shadow-2xl transition duration-500 ease-in-out"  key={product._id}>
+                            <img  src="https://cdn5.vectorstock.com/i/thumb-large/20/44/reseller-rgb-color-icon-vector-34552044.jpg" alt={product.name} className="w-90 h-30 m-auto object-contain rounded-t-xl border-b-2 border-gray-200" />
                             <div className='p-2'>
                                  <h3 className='font-bold text-lg pb-4'>{product.name}</h3>
                                  <p className='text-sm text-gray-600'>{product.price}€</p>
