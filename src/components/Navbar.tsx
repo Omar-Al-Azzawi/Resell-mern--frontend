@@ -19,7 +19,6 @@ export default function Navbar(props: Props) {
 
     useEffect(() => {
         const token = user?.token;
-
         setUser(JSON.parse(localStorage.getItem('user') || '{}'));
     }, [location])
 
@@ -32,7 +31,7 @@ export default function Navbar(props: Props) {
             </div>
             <div>
                 <input
-                 className='m-8 px-4 py-1 border placeholder-black border-black bg-transparent rounded-md w-full'
+                 className='m-8 px-4 py-1 border placeholder-gray-500 border-black bg-transparent rounded-md w-full'
                  type="text"
                  placeholder={props.placeholder}
                  onChange={props.handleChange}

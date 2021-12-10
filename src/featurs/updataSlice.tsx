@@ -1,7 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    updataProduct: String
+    updataProduct: {
+        id: '',
+        name: '',
+        price: '',
+        description: '',
+    }
 }
 
 const updataSlice = createSlice({

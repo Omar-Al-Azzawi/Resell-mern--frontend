@@ -2,18 +2,25 @@ import React, { useState } from 'react'
 import axios from 'axios'
 
 export default function AddProduct() {
+    const [user] = useState(JSON.parse(localStorage.getItem('user') || '{}'))
+    const [userLocal] = useState(JSON.parse(localStorage.getItem('userLocal') || '{}'))
     const [name, setName] = useState('')
     const [price, setPrice] = useState('')
     const [description, setDescription] = useState('')
+    const [creator] = useState(user.result?.googleId || userLocal?.data?.user?._id)
+
+    /* const userId = user.result?.googleId || userLocal?.data?.user?._id; */
 
     const handleSubmit = () => {
         axios.post('http://localhost:3000/api/v1/products', {
             name,
             price,
-            description
+            description,
+            creator
         })
             .then(res => {
                 console.log(res)
+               /*  setCreator(userId) */
             })
             .catch(err => {
                 console.log(err)

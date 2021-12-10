@@ -11,6 +11,7 @@ export default function UpdataProduct() {
     const [price, setPrice] = useState('')
     const [description, setDescription] = useState('')
 
+
     const updata = useSelector((state: any) => state.updata.updataProduct)
     
     const navigate = useNavigate()
