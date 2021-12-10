@@ -61,21 +61,20 @@ export default function Landing() {
                                     return val
                                 }
                             }).map((product: any) => (<div key={product._id} className="group relative">
-                          <div className="w-full h-100 p-2 bg-white rounded-xl border m-auto mb-10 hover:shadow-2xl transition duration-500 ease-in-out"  key={product._id}>
-                            <img  src="https://image.shutterstock.com/image-vector/resale-concept-big-word-text-260nw-1513710023.jpg" alt={product.name} className="w-70 h-30 py-10 m-auto object-contain rounded-xl border border-gray-200" />
+                          <div className="w-full h-90 p-2 bg-white rounded-xl border m-auto mb-10 hover:shadow-2xl transition duration-500 ease-in-out"  key={product._id}>
+                            <img  src="https://image.shutterstock.com/image-vector/resale-concept-big-word-text-260nw-1513710023.jpg" alt={product.name} className="w-70 h-30 py-10 m-auto object-contain rounded-t-xl border border-gray-200" />
                             <div className='p-2'>
                                  <h3 className='font-bold text-lg pb-4'>{product.name}</h3>
-                                 <p className='text-sm text-gray-600 mb-2'>{product.price}€</p>
+                                 <p className='text-sm text-gray-600'>{product.price}€</p>
                                  <p className='text-sm text-gray-600'>{product.description.slice(0, 20)}...</p>
                             </div>
                               <button className='m-2 bg-green-100 py-1 px-2 rounded-md hover:bg-green-200' onClick={() => dispatch(addItem(product))}><MdOutlineAddShoppingCart /></button>
                                 {user.result?.googleId === product.creator || userLocal?.data?.user?._id === product.creator ? <><button className='m-2 py-1 px-2 rounded-md hover:text-red-600' onClick={() => handleDelete(product._id)}><MdDelete /></button>
-                              <button className='mt-5 py-2 rounded-md hover:text-yellow-500 text-l' onClick={() => dispatch(updata(product))}>
+                              <button className=' rounded-md hover:text-yellow-500 text-l' onClick={() => dispatch(updata(product))}>
                                 <Link to={`/products/${product._id}`}> 
                                    <MdEditNote />
                                 </Link>
                               </button></> : null}
-                              {console.log(product.creator, 'creator')}
                             </div>
                             </div>
                         ))}

@@ -26,4 +26,5 @@
  */
 .App {
   background-color: rgb(255, 252, 247);
+  height: 100vh;
 }
