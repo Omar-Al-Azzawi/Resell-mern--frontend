@@ -2,18 +2,14 @@ import React, { useState } from 'react'
 import axios from 'axios'
 
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-
 
 export default function Signup() {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [disabled, setDisabled] = useState(false)
 
     const navigate = useNavigate()
-    const dispatch = useDispatch()
 
 
     const hundleClick = () => {
@@ -49,19 +45,15 @@ export default function Signup() {
                     <h2 className="mb-4 text-center text-3xl font-extrabold text-gray-900">Create your account</h2>
                 </div>
                 <div>
-                    {/* <label>First name</label> */}
                     <input onChange={(e) => setFirstName(e.target.value)} className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" type="text" placeholder='First name..'/>
                 </div>
                 <div>
-                    {/* <label>Last name</label> */}
                     <input onChange={(e) => setLastName(e.target.value)} className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" type="text" placeholder='Last name..'/>
                 </div>
                 <div>
-                    {/* <label>Email</label> */}
                     <input onChange={(e) => setEmail(e.target.value)} className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" type="text" placeholder='Email..'/>
                 </div>
                 <div>
-                    {/* <label>Password</label> */}
                     <input onChange={(e) => setPassword(e.target.value)} className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" type="password" placeholder='Password..'/>
                 </div>
                 <div className='mt-6'>

@@ -70,7 +70,7 @@ export default function Login() {
     /* const googleId : string = (process.env.REACT_APP_GOOGLE_ID as string); */
 
     return (
-        <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div className="h-screen min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
             <img

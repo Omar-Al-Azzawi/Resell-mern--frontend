@@ -1,18 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router'
 
 import { removeItem, clearCart } from '../../featurs/cartSlice'
+import Navbar from '../Navbar'
 
 export default function Cart() {
     const [ user ] = useState(JSON.parse(localStorage.getItem('user') || '{}'));
     const items = useSelector((state: any) => state.cart)
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const[search, setSearch] = useState('')
 
     const cartTotal = items?.cartItems.reduce((amount: Number, item: any) => amount + item.price, 0)
 
+    const handleChange = useCallback(
+      (e) => {
+        setSearch(e.target.value)
+      }, [])
+
     return (
+      <>
+      <Navbar
+        placeholder='Search by the name...'
+        handleChange={handleChange}
+       />
         <div className='h-screen grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 '>
           <div className='col-span-2'>
           <ul className="-my-6 divide-y divide-gray-200 mt-10 m-20">
@@ -20,7 +32,7 @@ export default function Cart() {
                     <li key={item._id} className="py-6 flex">
                     <div className="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden">
                       <img
-                        src="https://image.shutterstock.com/image-vector/resale-concept-big-word-text-260nw-1513710023.jpg"
+                        src="https://cdn5.vectorstock.com/i/thumb-large/20/44/reseller-rgb-color-icon-vector-34552044.jpg"
                         alt={item.imageAlt}
                         className="w-full h-full object-center object-cover"
                       />
@@ -91,5 +103,6 @@ export default function Cart() {
             : null
             }
         </div>
+       </>
     )
 }
