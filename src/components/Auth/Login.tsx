@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import { GoogleLogin } from 'react-google-login'
 import { useNavigate } from 'react-router-dom'
@@ -11,11 +11,9 @@ import { login }  from '../../featurs/authSlice'
 export default function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [isSignup, setIsSignp] = useState(false)
+
     const dispatch = useDispatch()
-
-
-    let navigate = useNavigate();
+    const navigate = useNavigate();
 
     function handleClick() {
         navigate("/signup");
@@ -32,6 +30,7 @@ export default function Login() {
               const token = response?.tokenId;
               console.log(response);
               navigate('/')
+              window.location.reload()
               try {
               dispatch(login({ result, token }))
               } catch (error) {
@@ -75,12 +74,14 @@ export default function Login() {
             <div className='w-1/3 m-auto fixed inset-0' style={{height: '300px'}} >
                 <h1 className='text-center text-blue-400 mb-4'>Sign in</h1>
                 <div className='mb-4'>
-                {/*  <label>Username</label> */}
                     <input onChange={(e) => setEmail(e.target.value)} className='w-full p-3 py-2 border border-gray-400 rounded-md' type="text" placeholder='Email..'/>
                 </div>
                 <div className='mb-4'>
-                    {/* <label>Password</label> */}
-                    <input onChange={(e) => setPassword(e.target.value)} className='w-full p-3 py-2 border border-gray-400 rounded-md' type="password" placeholder='Password..'/>
+                    <input
+                     onChange={(e) => setPassword(e.target.value)} className='w-full p-3 py-2 border border-gray-400 rounded-md'
+                     type="password"
+                     placeholder='Password..'
+                    />
                 </div>
                 <div className='flex justify-between items-center'>
                     <div>

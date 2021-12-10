@@ -6,9 +6,14 @@ import { useLocation } from 'react-router';
 
 import Logout from './Auth/Logout';
 
-export default function Navbar() {
+export interface Props{
+    placeholder: string
+    handleChange: (input : React.ChangeEvent<HTMLInputElement>) => void, 
+}
+
+export default function Navbar(props: Props) {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('user') || '{}'));
-    const [userLocal, setUserLocal] = useState(JSON.parse(localStorage.getItem('userLocal') || '{}'))
+    const [userLocal] = useState(JSON.parse(localStorage.getItem('userLocal') || '{}'))
     const cartSize = useSelector((state: any) => state.cart)
     const location = useLocation();
 
@@ -26,7 +31,12 @@ export default function Navbar() {
                 <img className='w-20' src="https://www.rsll.io/assets/images/resell-logo.png" alt="resale" />
             </div>
             <div>
-                <input className='m-8 px-4 py-1 border placeholder-black border-black bg-transparent rounded-md w-full' type="text" placeholder='Search...' />
+                <input
+                 className='m-8 px-4 py-1 border placeholder-black border-black bg-transparent rounded-md w-full'
+                 type="text"
+                 placeholder={props.placeholder}
+                 onChange={props.handleChange}
+                  />
             </div>
             <div>
                 <ul className='flex m-4'>
@@ -36,7 +46,7 @@ export default function Navbar() {
                     <li className='p-4 text-gray-600'>
                         {user ? (
                             <div className='flex'>
-                                <p className='mx-4'>{user?.result?.name || userLocal?.data?.user?.firstName}</p>
+                            <p className='mx-4'>{user?.result?.name || userLocal?.data?.user?.firstName}</p>
                                 {user?.result?.name || userLocal?.data?.user?.firstName ? <Logout/> : <Link className='hover:text-black border border-black rounded-md px-3' to="/login">Login</Link>}
                             </div>
                         ) : (

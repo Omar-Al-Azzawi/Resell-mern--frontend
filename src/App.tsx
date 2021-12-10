@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes } from "react-router-dom"
 import { Route } from "react-router"
 
-import Navbar from './components/Navbar';
+/* import Navbar from './components/Navbar'; */
 import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
 import Cart from './components/pages/Cart';
@@ -17,7 +17,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Navbar />
+ {/*        <Navbar /> */}
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
