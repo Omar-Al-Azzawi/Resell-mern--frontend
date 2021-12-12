@@ -12,7 +12,7 @@ const offerSlice = createSlice({
     reducers: {
         addOffer: (state: any, action: any) => {
             state.offers.push(action.payload);
-            /* localStorage.setItem("offers", JSON.stringify(state.offers)); */
+            localStorage.setItem("offers", JSON.stringify(state.offers));
         }  
     }
 });

@@ -1,15 +1,14 @@
 /* eslint-disable array-callback-return */
 import React, { useEffect, useState, useCallback } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
+import  { useDispatch } from 'react-redux'
 import ReactLoading from "react-loading";
 
 import Navbar from '../Navbar'
 import AddProduct from './AddProduct'
 import { addItem } from '../../featurs/cartSlice'
 import { updata } from '../../featurs/updataSlice'
-
-import { Link } from 'react-router-dom'
-import  { useDispatch } from 'react-redux'
 
 import { 
     MdDelete,
@@ -76,7 +75,7 @@ export default function Landing() {
                             }
                         }).map((product: any) => (<div key={product._id} className="group relative">
                         <div className="w-full h-90 p-2 bg-white rounded-xl border border-gray-600 m-auto mb-10 hover:shadow-2xl transition duration-500 ease-in-out"  key={product._id}>
-                        <img  src="https://cdn5.vectorstock.com/i/thumb-large/20/44/reseller-rgb-color-icon-vector-34552044.jpg" alt={product.name} className="w-90 h-30 m-auto object-contain rounded-t-xl border-b-2 border-gray-200" />
+                        <img  src={product.imgUrl || "https://cdn5.vectorstock.com/i/thumb-large/20/44/reseller-rgb-color-icon-vector-34552044.jpg"} alt={product.name} className="w-90 h-30 m-auto object-contain rounded-t-xl border-b-2 border-gray-200" />
                         <div className='p-2'>
                             <div className='flex justify-between'>
                                 <h3 className='font-bold text-lg pb-4'>{product.name}</h3>

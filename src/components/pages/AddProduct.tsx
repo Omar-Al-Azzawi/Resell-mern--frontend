@@ -14,7 +14,7 @@ export default function AddProduct() {
             name,
             price,
             description,
-            creator
+            creator,
         })
             .then(res => {
                 console.log(res)
