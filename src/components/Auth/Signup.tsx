@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import ReactLoading from "react-loading";
 
 import { useNavigate } from 'react-router-dom'
+
 
 export default function Signup() {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate()
 
@@ -30,11 +33,13 @@ export default function Signup() {
                 console.log(err)
             })
             navigate('/login')
+            setLoading(false)
             alert('You have successfully signed up')
     }
 
     return (
            <div className='h-screen'>
+               {loading ? <ReactLoading type={'bubbles'} color={'#fff'} height={'10%'} width={'10%'} /> :
                <div className='w-1/3 m-auto fixed inset-0' style={{height: '300px'}}>
                <div>
                     <img
@@ -63,6 +68,7 @@ export default function Signup() {
                     <p>I already have one <span className='text-blue-400 cursor-pointer hover:text-blue-600 transition duration-300 ease-in-out' onClick={hundleClick}>Sign in</span></p>
                 </div>
               </div>
+            }
             </div>
     )
 }

@@ -9,6 +9,7 @@ import cartReducer from './featurs/cartSlice';
 import authReducer from './featurs/authSlice';
 import updataReducer from './featurs/updataSlice';
 import productReducer from './featurs/productSlice';
+import offerReducer from './featurs/offerSlice';  
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     auth: authReducer,
     updata: updataReducer,
     product: productReducer,
+    offer: offerReducer
   }
 });
 

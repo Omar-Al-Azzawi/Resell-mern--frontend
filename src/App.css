@@ -3,6 +3,7 @@
 body {
   font-family: "Nunito", sans-serif;
 }
-*/ .App {
-  background-color: rgb(229, 235, 241);
+.App {
+  background-color: rgb(242, 246, 255);
+  height: full;
 }
