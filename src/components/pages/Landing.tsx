@@ -1,16 +1,21 @@
+/* eslint-disable array-callback-return */
 import React, { useEffect, useState, useCallback } from 'react'
 import axios from 'axios'
 
-import  { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { MdDelete } from 'react-icons/md'
-import { MdEditNote } from 'react-icons/md'
-import { MdOutlineAddShoppingCart } from 'react-icons/md'
-
+import Navbar from '../Navbar'
+import AddProduct from './AddProduct'
 import { addItem } from '../../featurs/cartSlice'
 import { updata } from '../../featurs/updataSlice'
-import AddProduct from './AddProduct'
-import Navbar from '../Navbar'
+
+import { Link } from 'react-router-dom'
+import  { useDispatch } from 'react-redux'
+
+import { 
+    MdDelete,
+    MdOutlineReadMore,
+    MdEditNote,
+    MdOutlineAddShoppingCart
+ } from 'react-icons/md'
 
 
 export default function Landing() {
@@ -25,7 +30,7 @@ export default function Landing() {
     useEffect(() => {
         axios.get(`http://localhost:3000/api/v1/products`)
             .then(res => {
-                console.log(res.data)
+                /* console.log(res.data) */
                 setProducts(res.data)
             })
     }, [])
@@ -47,7 +52,7 @@ export default function Landing() {
                         handleChange={handleChange}
                      />
                     <div className='mb-20'>
-                     {user.result?.googleId || userLocal?.data?.user?._id ? <AddProduct /> : 
+                     {userId ? <AddProduct /> : 
                          <div>
                             <h1 className='text-center text-2xl font-bold mt-10'>Welcome to the store</h1>
                             <p className='text-center text-gray-600'>Please login or register to add products</p>
@@ -64,12 +69,17 @@ export default function Landing() {
                           <div className="w-full h-90 p-2 bg-white rounded-xl border border-gray-600 m-auto mb-10 hover:shadow-2xl transition duration-500 ease-in-out"  key={product._id}>
                             <img  src="https://cdn5.vectorstock.com/i/thumb-large/20/44/reseller-rgb-color-icon-vector-34552044.jpg" alt={product.name} className="w-90 h-30 m-auto object-contain rounded-t-xl border-b-2 border-gray-200" />
                             <div className='p-2'>
-                                 <h3 className='font-bold text-lg pb-4'>{product.name}</h3>
+                                <div className='flex justify-between'>
+                                    <h3 className='font-bold text-lg pb-4'>{product.name}</h3>
+                                    <Link to={`product/${product._id}`}>
+                                      <span><MdOutlineReadMore className='text-gray-600 text-2xl mr-3' /></span>
+                                    </Link>
+                                </div>
                                  <p className='text-sm text-gray-600'>{product.price}€</p>
                                  <p className='text-sm text-gray-600'>{product.description.slice(0, 20)}...</p>
                             </div>
                               <button className='m-2 bg-green-100 py-1 px-2 rounded-md hover:bg-green-200' onClick={() => dispatch(addItem(product))}><MdOutlineAddShoppingCart /></button>
-                                {user.result?.googleId === product.creator || userLocal?.data?.user?._id === product.creator ? <><button className='m-2 py-1 px-2 rounded-md hover:text-red-600' onClick={() => handleDelete(product._id)}><MdDelete /></button>
+                                {userId === product.creator ? <><button className='m-2 py-1 px-2 rounded-md hover:text-red-600' onClick={() => handleDelete(product._id)}><MdDelete /></button>
                               <button className=' rounded-md hover:text-yellow-500 text-l' onClick={() => dispatch(updata(product))}>
                                 <Link to={`/products/${product._id}`}> 
                                    <MdEditNote />

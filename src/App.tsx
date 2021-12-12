@@ -8,6 +8,7 @@ import Signup from './components/Auth/Signup';
 import Cart from './components/pages/Cart';
 import Landing from './components/pages/Landing';
 import UpdataProduct from './components/pages/UpdataProduct';
+import Product from './components/pages/Product';
 import Footer from './components/Footer';
 
 import './App.css';
@@ -24,6 +25,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/products/:id" element={<UpdataProduct />} />
+          <Route path="/product/:id" element={<Product />} />
         </Routes>
         <Footer />
       </div>

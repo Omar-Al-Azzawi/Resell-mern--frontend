@@ -18,7 +18,7 @@ export default function Navbar(props: Props) {
     const location = useLocation();
 
     useEffect(() => {
-        const token = user?.token;
+        /* const token = user?.token; */
         setUser(JSON.parse(localStorage.getItem('user') || '{}'));
     }, [location])
 

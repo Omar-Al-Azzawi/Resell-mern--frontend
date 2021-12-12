@@ -3,17 +3,13 @@ import axios from 'axios'
 import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 
-import { updata } from '../../featurs/updataSlice'
-
 
 export default function UpdataProduct() {
     const [name, setName] = useState('')
     const [price, setPrice] = useState('')
     const [description, setDescription] = useState('')
 
-
     const updata = useSelector((state: any) => state.updata.updataProduct)
-    
     const navigate = useNavigate()
 
     const handleUpdata = async (id: any) => {

@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { useState, useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router'
@@ -6,7 +7,7 @@ import { removeItem, clearCart } from '../../featurs/cartSlice'
 import Navbar from '../Navbar'
 
 export default function Cart() {
-    const [ user ] = useState(JSON.parse(localStorage.getItem('user') || '{}'));
+  /*   const [ user ] = useState(JSON.parse(localStorage.getItem('user') || '{}')); */
     const items = useSelector((state: any) => state.cart)
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -28,7 +29,13 @@ export default function Cart() {
         <div className='h-screen grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 '>
           <div className='col-span-2'>
           <ul className="-my-6 divide-y divide-gray-200 mt-10 m-20">
-                {items.cartItems.map((item: any) => (
+                {items.cartItems.filter((val: any) => {
+                                if(search === ''){
+                                    return val
+                                } else if (val.name.toLowerCase().includes(search.toLowerCase())){
+                                    return val
+                                }
+                            }).map((item: any) => (
                     <li key={item._id} className="py-6 flex">
                     <div className="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden">
                       <img
@@ -63,13 +70,6 @@ export default function Cart() {
             <div>
                {items.cartItems.length > 0 ? <button className='font-medium text-red-600 hover:text-indigo-500 m-20' onClick={() => dispatch(clearCart())}>Remove all</button> : <>
                <p className='text-start m-20'>Cart is empty!</p>
-              {/*  <button
-                          type="button"
-                          className="fixed botton-10 text-blue-400 font-medium hover:text-indigo-500 ml-20"
-                          onClick={() => navigate('/')}
-                        >
-                          Back<span aria-hidden="true"> &rarr;</span>
-                        </button> */}
                </>}
             </div>
           </div>

@@ -7,19 +7,13 @@ export default function Footer() {
             <div className=' m-20'>
                 <ul className='flex items-center justify-center'>
                     <li className='text-gray-600 mx-3 text-2xl hover:text-black'>
-                        <a href="#">
                             <AiFillFacebook />
-                        </a>
                     </li>
                     <li className='text-gray-600 mx-3 text-2xl hover:text-black'>
-                        <a href="#">
                             <AiFillInstagram />
-                        </a>
                     </li>
                     <li className='text-gray-600 mx-3 text-2xl hover:text-black'>
-                        <a href="#">
                             <AiFillTwitterSquare />
-                        </a>
                     </li>
                 </ul>
             </div>
