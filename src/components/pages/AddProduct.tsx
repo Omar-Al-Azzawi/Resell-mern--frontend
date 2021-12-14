@@ -27,7 +27,7 @@ export default function AddProduct() {
 
 
     return (
-        <div className='flex flex-grow m-5'>
+        <div className='flex flex-col m-5 sm:flex-col mx-8 md:flex-row lg:flex-grow'>
             <input className='border border-gray-400 h-15 m-1 p-2 rounded-md' type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder='product name..'/>
             <input className='border border-gray-400 h-15  m-1 p-2 rounded-md' type="text" value={price} onChange={(e) => setPrice(e.target.value)} placeholder='price..'/>
             <input className='border border-gray-400 h-15 m-1 p-2 rounded-md flex-grow' value={description} onChange={(e) => setDescription(e.target.value)} placeholder='description..'/>
