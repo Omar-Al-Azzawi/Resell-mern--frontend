@@ -9,6 +9,7 @@ import Navbar from '../Navbar'
 import AddProduct from './AddProduct'
 import { addItem } from '../../featurs/cartSlice'
 import { updata } from '../../featurs/updataSlice'
+import { addLike } from '../../featurs/likeSlice'
 
 import { 
     MdDelete,
@@ -16,6 +17,8 @@ import {
     MdEditNote,
     MdOutlineAddShoppingCart
  } from 'react-icons/md'
+import { FiHeart } from 'react-icons/fi'
+import { BsSuitHeartFill } from 'react-icons/bs'
 
 
 export default function Landing() {
@@ -24,6 +27,7 @@ export default function Landing() {
     const [products, setProducts] = useState([])
     const [search, setSearch] = useState('')
     const [loading, setLoading] = useState(true)
+    const [like, setLike] = useState(false)
 
     const userId = user.result?.googleId || userLocal?.data?.user?._id;
     const dispatch = useDispatch()
@@ -52,6 +56,12 @@ export default function Landing() {
           setSearch(e.target.value)
         }, [])
 
+    const handleLike = (id: any) => {
+        dispatch(addLike(id))
+        setLike(!like)
+    }
+
+
     return (
             <section className='mb-20 h-full min-h-screen'>
                     <Navbar
@@ -74,8 +84,9 @@ export default function Landing() {
                                 return val
                             }
                         }).map((product: any) => (<div key={product._id} className="group relative">
-                        <div className="w-full h-90 p-2 bg-white rounded-xl border border-gray-600 m-auto mb-10 hover:shadow-2xl transition duration-500 ease-in-out"  key={product._id}>
-                        <img  src={product.imgUrl || "https://cdn5.vectorstock.com/i/thumb-large/20/44/reseller-rgb-color-icon-vector-34552044.jpg"} alt={product.name} className="w-90 h-30 m-auto object-contain rounded-t-xl border-b-2 border-gray-200" />
+                        <div className="w-full h-90 p-2 bg-white rounded-xl border border-gray-600 m-auto mb-10 hover:shadow-2xl transition duration-500 ease-in-out relative"  key={product._id}>
+                          <span onClick={() => handleLike(product._id)}>{like ? <BsSuitHeartFill className='absolute right-4 top-4 cursor-pointer text-red-500'/> : <FiHeart className='absolute right-4 top-4 cursor-pointer'/>}</span>
+                          <img  src={product.imgUrl || "https://cdn5.vectorstock.com/i/thumb-large/20/44/reseller-rgb-color-icon-vector-34552044.jpg"} alt={product.name} className="w-90 h-30 m-auto object-contain rounded-t-xl border-b-2 border-gray-200" />
                         <div className='p-2'>
                             <div className='flex justify-between'>
                                 <h3 className='font-bold text-lg pb-4'>{product.name}</h3>

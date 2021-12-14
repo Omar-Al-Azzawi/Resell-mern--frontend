@@ -6,6 +6,7 @@ import { Route } from "react-router"
 import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
 import Cart from './components/pages/Cart';
+import LikeProducts from './components/pages/LikeProducts';
 import Landing from './components/pages/Landing';
 import UpdataProduct from './components/pages/UpdataProduct';
 import Product from './components/pages/Product';
@@ -24,6 +25,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/likeproducts" element={<LikeProducts />} />
           <Route path="/products/:id" element={<UpdataProduct />} />
           <Route path="/product/:id" element={<Product />} />
         </Routes>

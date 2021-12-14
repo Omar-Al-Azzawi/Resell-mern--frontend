@@ -10,6 +10,7 @@ import authReducer from './featurs/authSlice';
 import updataReducer from './featurs/updataSlice';
 import productReducer from './featurs/productSlice';
 import offerReducer from './featurs/offerSlice';  
+import likeReducer from './featurs/likeSlice';
 
 const store = configureStore({
   reducer: {
@@ -17,7 +18,8 @@ const store = configureStore({
     auth: authReducer,
     updata: updataReducer,
     product: productReducer,
-    offer: offerReducer
+    offer: offerReducer,
+    like: likeReducer
   }
 });
 
