@@ -7,7 +7,6 @@ import { removeItem, clearCart } from '../../featurs/cartSlice'
 import Navbar from '../Navbar'
 
 export default function Cart() {
-  /*   const [ user ] = useState(JSON.parse(localStorage.getItem('user') || '{}')); */
     const items = useSelector((state: any) => state.cart)
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -68,14 +67,14 @@ export default function Cart() {
                 ))}
             </ul>
             <div>
-               {items.cartItems.length > 0 ? <button className='font-medium text-red-600 hover:text-indigo-500 m-20' onClick={() => dispatch(clearCart())}>Remove all</button> : <>
+               {items.cartItems.length > 0 ? <button className='font-medium text-red-600 hover:text-indigo-500 ml-20 mt-10' onClick={() => dispatch(clearCart())}>Remove all</button> : <>
                <p className='text-start m-20'>Cart is empty!</p>
                </>}
             </div>
           </div>
            {items.cartItems.length > 0 ? 
             <div className='mt-10 mr-10'>
-            <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
+            <div className="border-t border-gray-200 py-6 px-4">
                     <div className="flex justify-between text-base font-medium text-gray-900">
                       <p>Subtotal</p>
                       <p>{cartTotal}€</p>
