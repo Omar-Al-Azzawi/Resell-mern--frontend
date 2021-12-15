@@ -38,9 +38,9 @@ export default function Signup() {
     }
 
     return (
-           <div className='h-screen'>
-               {loading ? <ReactLoading type={'bubbles'} color={'#fff'} height={'10%'} width={'10%'} /> :
-               <div className='w-1/3 m-auto fixed inset-0' style={{height: '300px'}}>
+           <div className='h-screen min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
+               {loading ? <ReactLoading type={'bubbles'} color={'#000'} height={'10%'} width={'10%'} /> :
+               <div className='max-w-md w-full'>
                <div>
                     <img
                     className="mx-auto h-12 w-auto"
