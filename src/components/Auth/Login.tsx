@@ -119,7 +119,7 @@ export default function Login() {
               </button>
               <div>
                 <GoogleLogin 
-                    clientId=/* '67342742481-c1qnv118lim23qllulc4ic2oeeoo74l6.apps.googleusercontent.com' */'process.env.REACT_APP_GOOGLE_ID'
+                    clientId='67342742481-c1qnv118lim23qllulc4ic2oeeoo74l6.apps.googleusercontent.com'
                     render={renderProps => (
                         <button className='w-full h-10 mt-4 flex items-start justify-center px-4 py-1.5 bg-gray-100 rounded-md hover:bg-gray-200 transition duration-500 ease-in-out border border-gray-400' 
                         onClick={renderProps.onClick}

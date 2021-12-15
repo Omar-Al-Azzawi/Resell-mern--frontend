@@ -2,14 +2,14 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import  { useDispatch } from 'react-redux'
+import  { useDispatch, useSelector } from 'react-redux'
 import ReactLoading from "react-loading";
 
 import Navbar from '../Navbar'
 import AddProduct from './AddProduct'
 import { addItem } from '../../featurs/cartSlice'
 import { updata } from '../../featurs/updataSlice'
-import { addLike } from '../../featurs/likeSlice'
+import { addLike, removeLike } from '../../featurs/likeSlice'
 
 import { 
     MdDelete,
@@ -30,6 +30,8 @@ export default function Landing() {
     const [like, setLike] = useState(false)
 
     const userId = user.result?.googleId || userLocal?.data?.user?._id;
+    const likeProduct = useSelector((state: any) => state.like.likes)
+
     const dispatch = useDispatch()
     
     useEffect(() => {
@@ -56,11 +58,21 @@ export default function Landing() {
           setSearch(e.target.value)
         }, [])
 
-    const handleLike = (id: any) => {
-        dispatch(addLike(id))
-        setLike(!like)
-    }
+     function existLike(id: any) {
+        return likeProduct.find((item: any) => item.name === id.name)
+    } 
 
+
+    const handleLike = (id: any) => {
+        if(existLike(id)) {
+            dispatch(removeLike(id))
+            setLike(false)
+        } else {
+            dispatch(addLike(id))
+            setLike(true)
+        } 
+        console.log(likeProduct, 'likes');
+    }
 
     return (
             <section className='mb-20 h-full min-h-screen'>
@@ -85,7 +97,7 @@ export default function Landing() {
                             }
                         }).map((product: any) => (<div key={product._id} className="group relative">
                         <div className="w-full h-90 p-2 bg-white rounded-xl border border-gray-600 m-auto mb-10 hover:shadow-2xl transition duration-500 ease-in-out relative"  key={product._id}>
-                          <span onClick={() => handleLike(product._id)}>{like ? <BsSuitHeartFill className='absolute right-4 top-4 cursor-pointer text-red-500'/> : <FiHeart className='absolute right-4 top-4 cursor-pointer'/>}</span>
+                          <span onClick={() => handleLike(product)}>{existLike(product) ? <BsSuitHeartFill className='absolute right-4 top-4 cursor-pointer text-red-500'/> : <FiHeart className='absolute right-4 top-4 cursor-pointer'/>}</span>
                           <img  src={product.imgUrl || "https://cdn5.vectorstock.com/i/thumb-large/20/44/reseller-rgb-color-icon-vector-34552044.jpg"} alt={product.name} className="w-90 h-30 m-auto object-contain rounded-t-xl border-b-2 border-gray-200" />
                         <div className='p-2'>
                             <div className='flex justify-between'>
