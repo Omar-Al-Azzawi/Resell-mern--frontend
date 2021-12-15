@@ -71,7 +71,7 @@ export default function Landing() {
             dispatch(addLike(id))
             setLike(true)
         } 
-        console.log(likeProduct, 'likes');
+    /*     console.log(likeProduct, 'likes'); */
     }
 
     return (
@@ -88,7 +88,7 @@ export default function Landing() {
                          </div>}
                     </div>
                     {loading ? <ReactLoading className='m-auto' type='bubbles' color='#000' height={100} width={100} /> : 
-                            <div className="mt-10 mx-10 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                            <div className="mt-10 mx-10 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gap-x-8">
                             {products.filter((val: any) => {
                             if(search === ''){
                                 return val
