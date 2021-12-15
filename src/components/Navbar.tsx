@@ -15,7 +15,7 @@ export default function Navbar(props: Props) {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('user') || '{}'));
     const [userLocal] = useState(JSON.parse(localStorage.getItem('userLocal') || '{}'))
     const cartSize = useSelector((state: any) => state.cart)
-    const like = useSelector((state: any) => state.likes)
+    const likeProducts = useSelector((state: any) => state.like.likes)
     const location = useLocation();
 
     useEffect(() => {
@@ -52,9 +52,9 @@ export default function Navbar(props: Props) {
                     </li>
                     <li className='p-5 mx-4 flex text-black font-bold'>
                         <Link to="/likeproducts">
-                          <FiHeart className='mx-4 hover:text-gray-500'/>
+                          <FiHeart className='mr-1 hover:text-gray-500' style={{ color: likeProducts.length > 0 ? 'red' : 'black'}}/>
                         </Link>
-                      {/* <span className='mx-2'>{like.length > 0 ? like.length : null}</span> */}
+                          <span className='mr-4'>{likeProducts.length > 0 ? likeProducts.length : null}</span>
                       <Link to="/cart"><FiShoppingCart className='hover:text-gray-500'/></Link>
                       <span className='mx-2'>{cartSize.cartItems.length > 0 ? cartSize.cartItems.length : null}</span>
                     </li>
