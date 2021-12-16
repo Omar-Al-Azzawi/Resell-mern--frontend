@@ -1,13 +1,16 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+
+import { addItem } from '../../featurs/cartSlice'
+import { removeLike } from '../../featurs/likeSlice'
 
 export default function LikeProducts() {
     const likeProducts = useSelector((state: any) => state.like.likes)
-
-     console.log(likeProducts)
+    const dispatch = useDispatch()
 
     return (
         <div className='h-screen '>
+            <h1 className='text-center m-4 text-2xl'>Liked list</h1>
             { likeProducts.length > 0 ? (
                 <div className="-my-6 divide-y divide-gray-200 mt-10 m-20">
                     {likeProducts.map((product: any) => (
@@ -27,10 +30,10 @@ export default function LikeProducts() {
                             </div>
                             <div className="flex-1 flex items-end justify-between text-sm">
                                 <div>
-                                    <button className='text-base font-medium text-gray-900 hover:text-blue-400'>Add to cart</button>
+                                    <button className='text-base font-medium text-gray-900 hover:text-blue-400' onClick={() => dispatch(addItem(product))}>Add to cart</button>
                                 </div>
                                 <div className="flex">
-                                    <button className="font-medium text-red-400 hover:text-red-700" /* onClick={() => dispatch(removeItem(item))} */>
+                                    <button className="font-medium text-red-400 hover:text-red-700" onClick={() => dispatch(removeLike(product))}>
                                         Remove
                                     </button>
                                 </div>
@@ -40,7 +43,7 @@ export default function LikeProducts() {
                     ))}
                 </div>
             ) : (
-                <p>No products to show</p>
+                <p className='text-center m-4 text-xl'>No products to show</p>
             )}
         </div>
     )
