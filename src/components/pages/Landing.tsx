@@ -71,7 +71,6 @@ export default function Landing() {
             dispatch(addLike(id))
             setLike(true)
         } 
-    /*     console.log(likeProduct, 'likes'); */
     }
 
     return (

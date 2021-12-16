@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from "react-router-dom";
 import { FiShoppingCart, FiHeart } from 'react-icons/fi'
+import { GiHamburgerMenu } from 'react-icons/gi'
+import { AiOutlineClose } from 'react-icons/ai'
 import { useLocation } from 'react-router';
 
 import Logout from './Auth/Logout';
@@ -12,6 +14,7 @@ export interface Props{
 }
 
 export default function Navbar(props: Props) {
+    const [toggle, setToggle] = useState(false)
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('user') || '{}'));
     const [userLocal] = useState(JSON.parse(localStorage.getItem('userLocal') || '{}'))
     const cartSize = useSelector((state: any) => state.cart)
@@ -29,14 +32,14 @@ export default function Navbar(props: Props) {
             </div>
             <div>
                 <input
-                 className='m-8 px-4 py-1 border placeholder-gray-500 border-black bg-transparent rounded-md w-full'
+                 className='md:my-8 m-8 px-4 py-1 border placeholder-gray-500 border-black bg-transparent rounded-md w-full'
                  type="text"
                  placeholder={props.placeholder}
                  onChange={props.handleChange}
                   />
             </div>
             <div>
-                <ul className='flex m-4'>
+                <ul className='hidden lg:flex m-4'>
                     <li className='p-4 hover:text-gray-500 text-black font-bold'>
                         <Link to="/">Home</Link> 
                     </li>
@@ -59,7 +62,23 @@ export default function Navbar(props: Props) {
                       <span className='mx-2'>{cartSize.cartItems.length > 0 ? cartSize.cartItems.length : null}</span>
                     </li>
                 </ul>
+                <div className="lg:hidden menu-button m-8 text-white text-2xl " onClick={() => setToggle(!toggle)}>
+                    {toggle ? <AiOutlineClose className='text-gray-800 transition duration-300 ease-in-out' /> : <GiHamburgerMenu className='text-gray-800 transition duration-300 ease-in-out' /> }
+                </div>
             </div>
+            {toggle ? sideNavbar() : null}
         </nav>
+    )
+}
+const sideNavbar = () => {
+    return (
+        <div className='fixed z-50 bg-opacity-90 h-screen flex flex-col w-1/2 bg-gray-800 transition duration-500 ease-in-out'>
+            <div className='flex flex-col mt-4 py-2'>
+                <Link className='text-center text-white font-bold mt-20 hover:bg-blue-200 hover:text-gray-800 py-2 transition duration-500 ease-in-out' to="/">Home</Link>
+                <Link className='text-center text-white font-bold mt-10 hover:bg-blue-200 hover:text-gray-800 py-2 transition duration-500 ease-in-out' to="/login">Login</Link>
+                <Link className='text-center text-white font-bold mt-10 hover:bg-blue-200 hover:text-gray-800 py-2 transition duration-500 ease-in-out' to="/cart">Cart</Link>
+                <Link className='text-center text-white font-bold mt-10 hover:bg-blue-200 hover:text-gray-800 py-2 transition duration-500 ease-in-out' to="/likeproducts">Like</Link>
+            </div>
+        </div>
     )
 }

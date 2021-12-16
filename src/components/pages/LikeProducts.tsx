@@ -11,7 +11,7 @@ export default function LikeProducts() {
             { likeProducts.length > 0 ? (
                 <div className="-my-6 divide-y divide-gray-200 mt-10 m-20">
                     {likeProducts.map((product: any) => (
-                        <div className='flex my-6 py-4' key={product.id}>
+                        <div className='flex my-6 pt-4' key={product.id}>
                             <div className='flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden'>
                                <img  src="https://cdn5.vectorstock.com/i/thumb-large/20/44/reseller-rgb-color-icon-vector-34552044.jpg" alt={product.name} />
                             </div>    
@@ -23,11 +23,11 @@ export default function LikeProducts() {
                                 </h3>
                                 <p className="ml-4">{product.price}€</p>
                                 </div>
-                                <p className="mt-1 text-sm text-gray-500">{product.description.slice(0, 80)}</p>
+                                <p className="mt-1 text-sm text-gray-500">{product.description.slice(0, 150)}</p>
                             </div>
                             <div className="flex-1 flex items-end justify-between text-sm">
                                 <div>
-                                    <button className='text-base font-medium text-gray-900'>Add to cart</button>
+                                    <button className='text-base font-medium text-gray-900 hover:text-blue-400'>Add to cart</button>
                                 </div>
                                 <div className="flex">
                                     <button className="font-medium text-red-400 hover:text-red-700" /* onClick={() => dispatch(removeItem(item))} */>
