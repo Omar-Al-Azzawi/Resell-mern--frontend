@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { Link } from "react-router-dom";
 import { FiShoppingCart, FiHeart } from 'react-icons/fi'
 import { GiHamburgerMenu } from 'react-icons/gi'
-import { AiOutlineClose } from 'react-icons/ai'
+import { AiFillCloseCircle } from 'react-icons/ai'
 import { useLocation } from 'react-router';
 
 import Logout from './Auth/Logout';
@@ -63,7 +63,7 @@ export default function Navbar(props: Props) {
                     </li>
                 </ul>
                 <div className="lg:hidden menu-button m-8 text-white text-2xl " onClick={() => setToggle(!toggle)}>
-                    {toggle ? <AiOutlineClose className='text-gray-800 transition duration-300 ease-in-out' /> : <GiHamburgerMenu className='text-gray-800 transition duration-300 ease-in-out' /> }
+                    {toggle ? <AiFillCloseCircle className='text-gray-800 transition duration-300 ease-in-out' /> : <GiHamburgerMenu className='text-gray-800 transition duration-300 ease-in-out' /> }
                 </div>
             </div>
             {toggle ? sideNavbar() : null}
@@ -72,7 +72,7 @@ export default function Navbar(props: Props) {
 }
 const sideNavbar = () => {
     return (
-        <div className='fixed z-50 bg-opacity-90 h-screen flex flex-col w-1/2 bg-gray-800 transition duration-500 ease-in-out'>
+        <div className='fixed z-50 bg-opacity-90 h-screen flex flex-col w-1/2 bg-gray-800 transition duration-700 ease-in-out'>
             <div className='flex flex-col mt-4 py-2'>
                 <Link className='text-center text-white font-bold mt-20 hover:bg-blue-200 hover:text-gray-800 py-2 transition duration-500 ease-in-out' to="/">Home</Link>
                 <Link className='text-center text-white font-bold mt-10 hover:bg-blue-200 hover:text-gray-800 py-2 transition duration-500 ease-in-out' to="/login">Login</Link>
