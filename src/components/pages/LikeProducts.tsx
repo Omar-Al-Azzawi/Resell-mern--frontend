@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router'
 
 import { addItem } from '../../featurs/cartSlice'
 import { removeLike } from '../../featurs/likeSlice'
@@ -7,10 +8,11 @@ import { removeLike } from '../../featurs/likeSlice'
 export default function LikeProducts() {
     const likeProducts = useSelector((state: any) => state.like.likes)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     return (
-        <div className='h-screen '>
-            <h1 className='text-center m-4 text-2xl'>Liked list</h1>
+        <div className='h-screen'>
+            <h1 className='text-center pt-8 text-2xl'>Liked list</h1>
             { likeProducts.length > 0 ? (
                 <div className="-my-6 divide-y divide-gray-200 mt-10 m-20">
                     {likeProducts.map((product: any) => (
@@ -45,6 +47,9 @@ export default function LikeProducts() {
             ) : (
                 <p className='text-center m-4 text-xl'>No products to show</p>
             )}
+            <div>
+                <button className='m-20 text-base font-medium text-gray-900 hover:text-blue-400' onClick={() => navigate('/')}>Back to home</button>
+            </div>
         </div>
     )
 }
