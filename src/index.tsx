@@ -18,7 +18,7 @@ const store = configureStore({
     auth: authReducer,
     updata: updataReducer,
     product: productReducer,
-    offer: offerReducer,
+    offers: offerReducer,
     like: likeReducer
   }
 });

@@ -16,7 +16,7 @@ export default function LikeProducts() {
             { likeProducts.length > 0 ? (
                 <div className="-my-6 divide-y divide-gray-200 mt-10 m-20">
                     {likeProducts.map((product: any) => (
-                        <div className='flex my-6 pt-4' key={product.id}>
+                        <div className='flex my-6 pt-4' key={product._id}>
                             <div className='flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden'>
                                <img  src="https://cdn5.vectorstock.com/i/thumb-large/20/44/reseller-rgb-color-icon-vector-34552044.jpg" alt={product.name} />
                             </div>    
