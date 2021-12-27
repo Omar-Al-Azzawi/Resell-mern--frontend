@@ -18,8 +18,8 @@ import './App.css';
 function App() {
   return (
     <BrowserRouter>
+   {/*  <Navbar /> */}
       <div className="App">
- {/*        <Navbar /> */}
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
