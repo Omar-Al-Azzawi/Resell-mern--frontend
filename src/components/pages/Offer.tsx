@@ -16,7 +16,7 @@ export default function Offer() {
         const data = {
             offer: `${userName} offer ${offer}`
         }
-        await axios.put(`http://localhost:3000/api/v1/products/${id}`, data)
+        await axios.put(`https://resellapi.herokuapp.com/api/v1/products/${id}`, data)
         .then(res => {
             console.log(res)
         })

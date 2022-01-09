@@ -21,7 +21,7 @@ export default function Login() {
 
 
         const googleSuccess = async (response: any) => {
-            let res = await axios.post('http://localhost:3000/api/v1/users/google-auth',
+            let res = await axios.post('https://resellapi.herokuapp.com/api/v1/users/google-auth',
             { id_token: response.tokenObj.id_token }
             );
             console.log(res, 'res with token');
@@ -50,7 +50,7 @@ export default function Login() {
                 }
             }
 
-       await axios.post('http://localhost:3000/api/v1/users/login', {
+       await axios.post('https://resellapi.herokuapp.com/api/v1/users/login', {
             email,
             password
         }

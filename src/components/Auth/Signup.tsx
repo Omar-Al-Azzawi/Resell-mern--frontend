@@ -19,7 +19,7 @@ export default function Signup() {
         navigate('/login')
     }
     const hundleSubmit = async () => {
-        axios.post('http://localhost:3000/api/v1/users', {
+        axios.post('https://resellapi.herokuapp.com/api/v1/users', {
             firstName,
             lastName,
             email,

@@ -10,7 +10,7 @@ export default function AddProduct() {
     const [description, setDescription] = useState('')
 
     const handleSubmit = () => {
-        axios.post('http://localhost:3000/api/v1/products', {
+        axios.post('https://resellapi.herokuapp.com/api/v1/products', {
             name,
             price,
             description,

@@ -1,5 +1,5 @@
 import React from 'react'
-import { AiFillFacebook, AiFillInstagram, AiFillTwitterSquare } from 'react-icons/ai'
+import { TiSocialFacebook, TiSocialInstagram, TiSocialTwitter } from 'react-icons/ti'
 
 export default function Footer() {
     return (
@@ -7,13 +7,13 @@ export default function Footer() {
             <div className=' m-20'>
                 <ul className='flex items-center justify-center'>
                     <li className='text-gray-600 mx-3 text-2xl hover:text-black'>
-                            <AiFillFacebook />
+                            <TiSocialFacebook />
                     </li>
                     <li className='text-gray-600 mx-3 text-2xl hover:text-black'>
-                            <AiFillInstagram />
+                            <TiSocialInstagram />
                     </li>
                     <li className='text-gray-600 mx-3 text-2xl hover:text-black'>
-                            <AiFillTwitterSquare />
+                            <TiSocialTwitter />
                     </li>
                 </ul>
             </div>

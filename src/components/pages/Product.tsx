@@ -19,7 +19,7 @@ export default function Product() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/api/v1/products`)
+        axios.get(`https://resellapi.herokuapp.com/api/v1/products`)
             .then(res => {
 /*                 console.log(res.data) */
                 setInfos(res.data)
