@@ -73,7 +73,7 @@ export default function Login() {
               src="https://www.rsll.io/assets/images/resell-logo.png"
               alt="reseal"
             />
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
+            <h2 className="mt-4 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
           </div>
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
