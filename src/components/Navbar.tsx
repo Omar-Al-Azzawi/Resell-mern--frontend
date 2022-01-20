@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import { FiShoppingCart, FiHeart } from 'react-icons/fi'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { AiFillCloseCircle } from 'react-icons/ai'
+import { FaSellcast } from 'react-icons/fa'
 import { useLocation } from 'react-router';
 
 import Logout from './Auth/Logout';
+import "./Navbar.css";
 
 export interface Props{
     placeholder: string
@@ -26,13 +28,15 @@ export default function Navbar(props: Props) {
     }, [location])
 
     return (
-        <nav className='flex justify-between bg-gradient-to-b from-blue-600 '>
+        <nav className='navbar-container flex justify-between bg-gradient-to-b from-blue-600 '>
             <div className='flex m-8'>
-                <img className='w-20' src="https://www.rsll.io/assets/images/resell-logo.png" alt="resale" />
+                <Link to='/' className='text-white text-2xl font-bold'>
+                    <h1 className='text-black flex'><FaSellcast className='mt-1 text-blue-800'/>RESELL</h1>
+                </Link>
             </div>
             <div>
                 <input
-                 className='md:my-8 m-8 px-4 py-1 border placeholder-gray-500 border-black bg-transparent rounded-md w-full'
+                 className='search-bar md:my-8 m-8 px-4 py-1 border placeholder-gray-500 border-black bg-transparent rounded-md w-full'
                  type="text"
                  placeholder={props.placeholder}
                  onChange={props.handleChange}
@@ -63,7 +67,9 @@ export default function Navbar(props: Props) {
                     </li>
                 </ul>
                 <div className="lg:hidden menu-button m-8 text-white text-2xl " onClick={() => setToggle(!toggle)}>
-                    {toggle ? <AiFillCloseCircle className='text-gray-800 transition duration-300 ease-in-out' /> : <GiHamburgerMenu className='text-gray-800 transition duration-300 ease-in-out' /> }
+                    <div className={`navbar-burger-line1 ${toggle ? "close1" : ""}`}></div>
+                    <div className={`navbar-burger-line2 ${toggle ? "close2" : ""}`}></div>
+                    <div className={`navbar-burger-line3 ${toggle ? "close3" : ""}`}></div>
                 </div>
             </div>
             {toggle ? sideNavbar() : null}
