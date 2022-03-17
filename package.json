@@ -19,6 +19,7 @@
     "dotenv": "^8.2.0",
     "jwt-decode": "^3.1.2",
     "react": "^17.0.2",
+    "react-animated-popup": "^0.1.1",
     "react-dom": "^17.0.2",
     "react-google-login": "^5.2.2",
     "react-icons": "^4.3.1",
@@ -57,6 +58,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.8.8",
+    "cypress": "^9.5.2",
     "postcss": "^7.0.39",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
   }
