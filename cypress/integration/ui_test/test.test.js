@@ -8,11 +8,12 @@ describe("UI Test", () => {
     });
   });
   it("should be able to login", () => {
+    cy.url().should("include", "/login");
     cy.contains("RESELL").should("be.visible");
     cy.get(".flex > .items-center").should("be.visible");
   });
-  // must be fix
-  /* it("should be able to logout", () => {
-    cy.logout();
-  }); */
+
+  it("should show the add product form after login", () => {
+    cy.get('[placeholder="product name.."]').should("be.visible");
+  });
 });

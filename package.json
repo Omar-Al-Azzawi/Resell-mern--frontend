@@ -57,8 +57,11 @@
     ]
   },
   "devDependencies": {
+    "@cypress/code-coverage": "^3.9.12",
     "autoprefixer": "^9.8.8",
+    "babel-plugin-istanbul": "^6.1.1",
     "cypress": "^9.5.2",
+    "nyc": "^15.1.0",
     "postcss": "^7.0.39",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
   }
