@@ -39,14 +39,14 @@ export default function Product() {
               />
             {infos && infos.filter((info: any) => info._id == id).map((info: any) => {
                 return (
-                    <div key={info._id} className='grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3'>
+                    <div key={info._id} className='grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3' data-cy="products">
                         <div className='col-span-2 m-40'>
-                            <h1 className='text-4xl font-bold mb-4 '>{info.name}</h1>
-                            <h1 className='text-l text-gray-500 mb-4'>{info.price}€</h1>
-                            <h1 className='text-l text-gray-500 mb-10'>{info.description}</h1>
+                            <h1 className='text-4xl font-bold mb-4' data-cy="product-name">{info.name}</h1>
+                            <h1 className='text-l text-gray-500 mb-4' data-cy="product-price">{info.price}€</h1>
+                            <h1 className='text-l text-gray-500 mb-10' data-cy="product-description">{info.description}</h1>
                             <div className='mb-8'>
-                                <button className='border border-gray-400 py-1 px-2 rounded-md hover:bg-blue-400 hover:text-white' onClick={() => dispatch(addItem(info))}>Add to cart</button>
-                                <button className='border border-gray-400 py-1 px-2 mx-2 rounded-md hover:bg-blue-400 hover:text-white' onClick={() => navigate('/')}>Back to home</button>
+                                <button className='border border-gray-400 py-1 px-2 rounded-md hover:bg-blue-400 hover:text-white' data-cy="add-btn" onClick={() => dispatch(addItem(info))}>Add to cart</button>
+                                <button className='border border-gray-400 py-1 px-2 mx-2 rounded-md hover:bg-blue-400 hover:text-white' data-cy="back-btn" onClick={() => navigate('/')}>Back to home</button>
                             </div>
                             <div>
                                 <Offer />
@@ -57,6 +57,7 @@ export default function Product() {
                             src="https://cdn5.vectorstock.com/i/thumb-large/20/44/reseller-rgb-color-icon-vector-34552044.jpg"
                             alt={info.name}
                             className='border border-gray-400 rounded-lg mt-40'
+                            data-cy="product-img"
                             />
                         </div>
                     </div>
