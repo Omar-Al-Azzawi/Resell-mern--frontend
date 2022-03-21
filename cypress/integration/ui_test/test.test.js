@@ -16,4 +16,12 @@ describe("UI Test", () => {
   it("should show the add product form after login", () => {
     cy.get('[placeholder="product name.."]').should("be.visible");
   });
+
+  it("should be able to add a product", () => {
+    cy.get('[placeholder="product name.."]').type("test product");
+    cy.get('[placeholder="price.."]').type("100");
+    cy.get(".flex-grow").type("test description");
+    cy.get(".flex > .items-center").click();
+    cy.contains("test product").should("be.visible");
+  });
 });
